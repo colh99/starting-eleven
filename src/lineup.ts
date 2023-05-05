@@ -7,20 +7,21 @@ function hello(who: string = world): string {
 // Enum is a TypeScript feature. Here it is used to define all the 
 // possible positions that a player might have in our program.
 enum Position { 
-    GK = "Goalkeeper",
-    CB = "Center Back",
-    LB = "Left Back",
-    RB = "Right Back",
-    LWB = "Left Wing Back",
-    RWB = "Right Wing Back",
-    CDM = "Central Defensive Midfielder",
-    CAM = "Central Attacking Midfielder",
-    CM = "Central Midfielder",
-    LM = "Left Midfielder",
-    RM = "Right Midfielder",
-    LW = "Left Winger",
-    RW = "Right Winger",
-    ST = "Striker"
+    GK = "GK",    // Goalkeeper
+    CB = "CB",    // Center Back
+    LB = "LB",    // Left Back
+    RB = "RB",    // Right Back
+    LWB = "LWB",  // Left Wing Back
+    RWB = "RWB",  // Right Wing Back
+    CDM = "CDM",  // Central Defensive Midfielder
+    CM = "CM",    // Central Midfielder
+    LM = "LM",    // Left Midfielder
+    RM = "RM",    // Right Midfielder
+    CAM = "CAM",  // Central Attacking Midfielder
+    LW = "LW",    // Left Winger
+    RW = "RW",    // Right Winger
+    CF = "CF",    // Center Forward
+    ST = "ST",    // Striker
 }
 
 
@@ -29,9 +30,8 @@ enum Position {
 interface Player {
     firstName: string;
     lastName: string;
-    position: Position; // uses the enum Position
+    positions: Position[]; // uses the enum Position. Preferred position should be listed first.
     shirtNumber: number;
-
 }
 
 
@@ -39,18 +39,42 @@ class Footballer implements Player {
     constructor(
         public firstName: string,
         public lastName: string,
-        public position: Position, // uses the enum Position
+        public positions: Position[], // uses the enum Position
         public shirtNumber: number
     ) {}
-
-    
     
 }
 
-let player1 = new Footballer("Tyler", "Adams", Position.CDM, 12);
+let player1 = new Footballer("Tyler", "Adams", [Position.CDM, Position.CM], 12);
  
 function displayFootballer(footballer: Footballer) {
-    return footballer.firstName + " " + footballer.lastName + " wears shirt number " + footballer.shirtNumber + " and plays as a " + footballer.position;
-}
+    const playerCard = document.createElement("div");
+    playerCard.classList.add("player-card");
+  
+    const name = document.createElement("h2");
+    name.classList.add("player-name");
+    name.textContent = `${footballer.firstName} ${footballer.lastName}`;
+  
+    const position = document.createElement("p");
+    position.classList.add("player-position");
+    position.textContent = `${footballer.positions[0]}`;
+  
+    const shirtNumber = document.createElement("p");
+    shirtNumber.classList.add("player-shirt-number");
+    shirtNumber.textContent = `#${footballer.shirtNumber}`;
 
-document.body.textContent = displayFootballer(player1);
+    const profileImg = document.createElement("img");
+    profileImg.src = "src/images/person-icon.webp";
+    profileImg.classList.add("img");
+    
+  
+    playerCard.appendChild(name);
+    playerCard.appendChild(shirtNumber);
+    playerCard.appendChild(profileImg);
+    playerCard.appendChild(position);
+  
+    return playerCard;
+  }
+  
+
+  document.body.appendChild(displayFootballer(player1));
