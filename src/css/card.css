@@ -3,12 +3,15 @@
   user-select: none;
   display: flex;
   flex-wrap: wrap-reverse;
-  align-items: end;
   justify-content: center;
-  flex-direction: row;
+  align-content: space-evenly;
   height: 100vh;
   width: 80vh;
   border: 0px solid black;
+}
+
+#fwd-row {
+  margin-top: 10em;
 }
 
 #field-img {
@@ -21,12 +24,12 @@
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-  z-index: -1;
+  z-index: -5;
 }
 
 .formation-row {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.5em;
 }
 
 .player-card {
@@ -34,6 +37,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 4em;
   cursor: move;
   margin: 10px;
   padding: 10px;
@@ -48,24 +52,37 @@
   font-size: 18px;
   font-weight: bold;
   text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 1px 2px black;
 }
 
 .player-card .player-position {
   margin: 0;
   font-size: 16px;
+  font-weight: bold;
   text-align: center;
+  width: 3em;
+  color: black;
+  text-align: center;
+  -o-appearance: none;
+  -ms-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .player-card .player-shirt-number {
-  margin: 0;
-  font-size: 16px;
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
   text-align: center;
+  color: rgb(0, 0, 0);
 }
 
 .player-card img {
-  width: 50px;
-  height: 52px;
-  border-radius: 50%;
+  position: absolute;
+  width: 70px;
+  height: 60px;
   padding: 2px;
-  border: 2px solid rgb(0, 0, 0);
+  z-index: -3;
 }
