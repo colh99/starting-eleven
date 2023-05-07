@@ -46,35 +46,23 @@ class Footballer implements Player {
 }
 
 let player1 = new Footballer("Tyler", "Adams", [Position.CDM, Position.CM], 12);
- 
-function displayFootballer(footballer: Footballer) {
-    const playerCard = document.createElement("div");
-    playerCard.classList.add("player-card");
+let playerID: string = "player7"; 
+
+function displayFootballer(footballer: Footballer, playerID: string) {
+    const playerCard = document.querySelector(playerID)
   
-    const name = document.createElement("h2");
-    name.classList.add("player-name");
+    const name = document.querySelector("#player7 h2") as HTMLHeadingElement;
     name.textContent = `${footballer.firstName} ${footballer.lastName}`;
   
-    const position = document.createElement("p");
+    const position = document.querySelector(`#${playerID} .player-position`) as HTMLParagraphElement;
     position.classList.add("player-position");
     position.textContent = `${footballer.positions[0]}`;
   
-    const shirtNumber = document.createElement("p");
-    shirtNumber.classList.add("player-shirt-number");
+    const shirtNumber = document.querySelector(`#${playerID} .player-shirt-number`) as HTMLParagraphElement;
     shirtNumber.textContent = `#${footballer.shirtNumber}`;
 
-    const profileImg = document.createElement("img");
+    const profileImg = document.querySelector(`#${playerID} img`) as HTMLImageElement;
     profileImg.src = "src/images/person-icon.webp";
-    profileImg.classList.add("img");
-    
+}
   
-    playerCard.appendChild(name);
-    playerCard.appendChild(shirtNumber);
-    playerCard.appendChild(profileImg);
-    playerCard.appendChild(position);
-  
-    return playerCard;
-  }
-  
-
-  document.body.appendChild(displayFootballer(player1));
+displayFootballer(player1, playerID);
