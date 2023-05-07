@@ -72,7 +72,7 @@ class Footballer implements Player {
 
 // This function takes a player object, and the ID of the playerCard. It populates the playerCard with the player data
 function displayFootballer(footballer: Footballer, playerID: string) {  
-    const name = document.querySelector("#player7 h2") as HTMLHeadingElement;
+    const name = document.querySelector(`#${playerID} h2`) as HTMLHeadingElement;
     name.textContent = `${footballer.firstName} ${footballer.lastName}`;
   
     const shirtNumber = document.querySelector(`#${playerID} .player-shirt-number`) as HTMLParagraphElement;
@@ -105,10 +105,18 @@ async function fetchPlayerData(): Promise<Footballer[]> {
   }
 }
 
-// Get the list of players
-let playerList = fetchPlayerData();
+// Usage example
+fetchPlayerData().then((playerList) => {
+  displayFootballer(playerList[0], "player1");
+  displayFootballer(playerList[7], "player2");
+  displayFootballer(playerList[9], "player3");
+  displayFootballer(playerList[3], "player4");
+  displayFootballer(playerList[6], "player5");
+  displayFootballer(playerList[14], "player6");
+  displayFootballer(playerList[13], "player7");
+  displayFootballer(playerList[11], "player8");
+  displayFootballer(playerList[17], "player9");
+  displayFootballer(playerList[21], "player10");
+  displayFootballer(playerList[22], "player11");
 
-// Test player
-// let player1 = new Footballer("Tyler", "Adams", [Position.CDM, Position.CM], 12);
-// let playerID: string = "player7"; 
-// displayFootballer(player1, playerID);
+});

@@ -49,9 +49,10 @@
 
 .player-card .player-name {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   text-align: center;
+  white-space: nowrap;
   color: rgb(255, 255, 255);
   text-shadow: 2px 1px 2px black;
 }
