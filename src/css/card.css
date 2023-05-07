@@ -1,30 +1,47 @@
 .field {
-  user-select: none;
   margin: auto;
-  position: relative;
-  display: inline-block;
-  width: fit-content;
-  height: fit-content;
+  user-select: none;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: self-end;
+  justify-content: center;
+  flex-direction: row;
+  column-gap: 0;
+  height: 100vh;
+  width: 80vh;
   border: 2px solid black;
 }
 
 #field-img {
   user-select: none;
+  position: absolute;
   margin: auto;
-  align-self: center;
-  width: auto;
-  height: 100%;
+  width: 80vh;
+  height: 100vh;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  z-index: -1;
+}
+
+.formation-row {
+  display: flex;
+  gap: 1rem;
 }
 
 .player-card {
-  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   cursor: move;
   margin: 10px;
   padding: 10px;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  border: 2px solid black;
 }
 
 .player-card .player-name {
