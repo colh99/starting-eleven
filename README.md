@@ -4,7 +4,7 @@ This project is a soccer/football lineup builder. It is currently a work-in-prog
 
 While building it, I hope to learn more about TypeScript and demonstrate TypeScript features.
 
-[](http://youtube.link.goes.here)
+[Video Demonstration of Project](https://youtu.be/1ifuUsLMrkY) - 5/6/2023
 
 # Development Environment
 
