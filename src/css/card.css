@@ -29,7 +29,7 @@
 
 .formation-row {
   display: flex;
-  gap: 1.5em;
+  gap: 2em;
 }
 
 .player-card {
@@ -44,7 +44,7 @@
   width: 100px;
   height: 100px;
   border-radius: 10px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
 .player-card .player-name {

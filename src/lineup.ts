@@ -69,12 +69,9 @@ class Footballer implements Player {
     
 }
 
-let player1 = new Footballer("Tyler", "Adams", [Position.CDM, Position.CM], 12);
-let playerID: string = "player7"; 
 
-function displayFootballer(footballer: Footballer, playerID: string) {
-    const playerCard = document.querySelector(playerID)
-  
+// This function takes a player object, and the ID of the playerCard. It populates the playerCard with the player data
+function displayFootballer(footballer: Footballer, playerID: string) {  
     const name = document.querySelector("#player7 h2") as HTMLHeadingElement;
     name.textContent = `${footballer.firstName} ${footballer.lastName}`;
   
@@ -82,4 +79,36 @@ function displayFootballer(footballer: Footballer, playerID: string) {
     shirtNumber.textContent = `${footballer.shirtNumber}`;
 }
   
-displayFootballer(player1, playerID);
+
+// This function reads from the json data and creates a Footballer object
+async function fetchPlayerData(): Promise<Footballer[]> {
+  try {
+    const response = await fetch("src/data/players.json");
+    const data = await response.json();
+    const players: Footballer[] = [];
+
+    for (const playerData of data.players) {
+      const { firstName, lastName, positions, shirtNumber } = playerData;
+      const footballer = new Footballer(
+        firstName,
+        lastName,
+        positions as Position[],
+        shirtNumber
+      );
+      players.push(footballer);
+    }
+
+    return players;
+  } catch (error) {
+    console.error("Error fetching player data:", error);
+    return [];
+  }
+}
+
+// Get the list of players
+let playerList = fetchPlayerData();
+
+// Test player
+// let player1 = new Footballer("Tyler", "Adams", [Position.CDM, Position.CM], 12);
+// let playerID: string = "player7"; 
+// displayFootballer(player1, playerID);
