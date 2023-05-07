@@ -29,4 +29,7 @@ To compile, enter `tsc` in the terminal. This will generate a .js file. Alternat
 
 # Future Work
 
-Eventually, I would like the program to allow the user to select from an assortment of player "cards," and drag and drop them onto a field to visually represent the formation and lineup.
+* Drag and Drop: Move players around freely for complete customization of the formation
+* Select players: Add UI elements to select or switch out players
+* Create custom players: Let the user add their own players
+* Fetch players: Utilize an API to retrieve player data
