@@ -3,13 +3,12 @@
   user-select: none;
   display: flex;
   flex-wrap: wrap-reverse;
-  align-items: self-end;
+  align-items: end;
   justify-content: center;
   flex-direction: row;
-  column-gap: 0;
   height: 100vh;
   width: 80vh;
-  border: 2px solid black;
+  border: 0px solid black;
 }
 
 #field-img {
@@ -27,7 +26,7 @@
 
 .formation-row {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .player-card {
