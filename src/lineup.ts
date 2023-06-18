@@ -119,7 +119,7 @@ async function testFetchPlayerData() {
   }
 }
 
-//testFetchPlayerData();
+testFetchPlayerData();
 
 
 // Usage example

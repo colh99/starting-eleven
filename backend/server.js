@@ -36,7 +36,7 @@ connection.connect((err) => {
   }
 });
 
-const port = 3000; // Choose a port number for your server
+const port = 3000; // Port number for the server
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
