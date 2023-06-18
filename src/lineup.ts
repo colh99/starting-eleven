@@ -81,19 +81,19 @@ function displayFootballer(footballer: Footballer, playerID: string) {
   
 
 // This function reads from the json data and creates a Footballer object
-async function fetchPlayerData(): Promise<Footballer[]> {
+async function readPlayerData(): Promise<Footballer[]> {
   try {
-    const response = await fetch("src/data/players.json");
+    const response = await fetch("http://localhost:3000/api/players");
     const data = await response.json();
     const players: Footballer[] = [];
 
-    for (const playerData of data.players) {
-      const { firstName, lastName, positions, shirtNumber } = playerData;
+    for (const playerData of data) {
+      const { first_name, last_name, positions, shirt_number } = playerData;
       const footballer = new Footballer(
-        firstName,
-        lastName,
+        first_name,
+        last_name,
         positions as Position[],
-        shirtNumber
+        shirt_number
       );
       players.push(footballer);
     }
@@ -105,18 +105,35 @@ async function fetchPlayerData(): Promise<Footballer[]> {
   }
 }
 
+// This function prints data from the server to the console for testing purposes
+async function testFetchPlayerData() {
+  try {
+    const response = await fetch("http://localhost:3000/api/players");
+    if (!response.ok) {
+      throw new Error("Failed to fetch player data");
+    }
+    const data = await response.json();
+    console.log(data); // Do something with the player data
+  } catch (error) {
+    console.error("Error fetching player data:", error);
+  }
+}
+
+//testFetchPlayerData();
+
+
 // Usage example
-fetchPlayerData().then((playerList) => {
+readPlayerData().then((playerList) => {
   displayFootballer(playerList[0], "player1");
   displayFootballer(playerList[7], "player2");
-  displayFootballer(playerList[9], "player3");
+  displayFootballer(playerList[4], "player3");
   displayFootballer(playerList[3], "player4");
   displayFootballer(playerList[6], "player5");
-  displayFootballer(playerList[14], "player6");
+  displayFootballer(playerList[21], "player6");
   displayFootballer(playerList[13], "player7");
   displayFootballer(playerList[11], "player8");
-  displayFootballer(playerList[17], "player9");
-  displayFootballer(playerList[21], "player10");
-  displayFootballer(playerList[22], "player11");
+  displayFootballer(playerList[18], "player9");
+  displayFootballer(playerList[19], "player10");
+  displayFootballer(playerList[24], "player11");
 
 });
